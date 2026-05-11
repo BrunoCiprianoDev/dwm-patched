@@ -4,7 +4,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -30,6 +30,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+ 	{ "xdg-desktop-portal-gtk", NULL, NULL, 1, 1, -1 },
 };
 
 /* layout(s) */
@@ -108,7 +109,7 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
 	{ 0, XF86XK_AudioMute,        spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-
+	{ 0, XK_Print, spawn, SHCMD("scrot ~/documents/images/print_%Y-%m-%d_%H-%M-%S.png") },
 
 };
 
